@@ -5,47 +5,23 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+$routes->get('/', 'auth::dashboard');
+$routes->get('/login', 'auth::login');
+$routes->post('/login', 'auth::login');
+$routes->get('/register', 'auth::register');
+$routes->post('/register', 'auth::register');
+$routes->get('/dashboard', 'auth::dashboard');
+$routes->get('/logout', 'auth::logout');
+$routes->get('/restricted', 'Home::restricted');
 
-/**
- * 
- */
-$routes->get('/', 'Home::index');
-$routes->get('/about', 'Home::about');
-$routes->get('/contact', 'Home::contact');
-/**
- * 
- */
-$routes->get('/register', 'Auth::new');
-$routes->get('/login', 'Auth::index');
-$routes->post('/login/auth', 'Auth::auth');
+$routes->get('/users', 'UserController::index');
 
-$routes->get('/logout', 'Auth::logout');
-$routes->get('/dashboard', 'Auth::dashboard');
-$routes->post('/register', 'Auth::create');
-$routes->get('/register/success', 'Auth::success');
+// Edit user (loads the same page with the edit form)
+$routes->get('/users/edit/(:num)', 'UserController::edit/$1');
 
-// Admin routes
-$routes->get('/admin/users', 'Admin::users');
-$routes->post('/admin/users/create', 'Admin::createUser');
-$routes->get('/admin/users/delete/(:num)', 'Admin::deleteUser/$1');
-$routes->get('/admin/courses', 'Admin::courses');
-$routes->get('/admin/reports', 'Admin::reports');
-$routes->get('/admin/settings', 'Admin::settings');
+// Update user (POST)
+$routes->post('/users/update', 'UserController::update');
 
-// Teacher routes
-$routes->get('/teacher/courses', 'Teacher::courses');
-$routes->get('/teacher/students', 'Teacher::students');
-$routes->get('/teacher/gradebook', 'Teacher::gradebook');
-$routes->get('/teacher/assignments', 'Teacher::assignments');
+$routes->post('/users/create', 'UserController::create');
 
-// Student routes
-$routes->get('/student/courses', 'Student::courses');
-$routes->get('/student/grades', 'Student::grades');
-$routes->get('/student/schedule', 'Student::schedule');
-$routes->get('/student/assignments', 'Student::assignments');
 
-// Common routes
-$routes->get('/about', 'Pages::about');
-$routes->get('/contact', 'Pages::contact');
-
-$routes->setAutoRoute(true);

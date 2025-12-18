@@ -20,6 +20,7 @@
 # APP
 #--------------------------------------------------------------------
 
+app.debug = true
 # app.baseURL = ''
 # If you have trouble with `.`, you could also use `_`.
 # app_baseURL = ''
@@ -31,7 +32,7 @@
 #--------------------------------------------------------------------
 
  database.default.hostname = localhost
- database.default.database = lms_alcayde
+ database.default.database = castro
  database.default.username = root
  database.default.password = 
  database.default.DBDriver = MySQLi

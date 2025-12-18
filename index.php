@@ -2,7 +2,6 @@
 
 use CodeIgniter\Boot;
 use Config\Paths;
-$_SERVER['CI_ENVIRONMENT'] = 'development';
 
 /*
  *---------------------------------------------------------------

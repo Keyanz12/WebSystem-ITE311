@@ -4,30 +4,40 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 
-class CourseSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     public function run()
     {
         $data = [
             [
-                'course_name'      => 'Web Development',
-                'course_instructor'=> 'Prof. Santos',
+                'name'     => 'Admin User',
+                'email'    => 'admin@example.com',
+                'password' => password_hash('admin123', PASSWORD_DEFAULT),
+                'status'   => 'granted',
+                'role'     => 'admin',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'course_name'      => 'Database Management',
-                'course_instructor'=> 'Dr. Cruz',
+                'name'     => 'John Student',
+                'email'    => 'student@example.com',
+                'password' => password_hash('student123', PASSWORD_DEFAULT),
+                'status'   => 'granted',
+                'role'     => 'student',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'course_name'      => 'Software Engineering',
-                'course_instructor'=> 'Engr. Dela Cruz',
-            ],
-            [
-                'course_name'      => 'Information Security',
-                'course_instructor'=> 'Prof. Mendoza',
+                'name'     => 'Jane Instructor',
+                'email'    => 'instructor@example.com',
+                'password' => password_hash('instructor123', PASSWORD_DEFAULT),
+                'status'   => 'granted',
+                'role'     => 'instructor',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
         ];
 
-        // Insert multiple records at once
-        $this->db->table('courses')->insertBatch($data);
+        $this->db->table('users')->insertBatch($data);
     }
 }

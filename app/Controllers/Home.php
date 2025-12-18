@@ -4,16 +4,18 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
-    public function index(): string
+    public function index()
     {
-        return view('index');
+        //return view('template/header');
     }
-      public function about(): string
+
+     public function restricted()
     {
-        return view('about');
-    }
-      public function contact(): string
-    {
-        return view('contact');
+        if(! session()->get('logged_in') &&  session()->get('user_status')!== 'restricted') {
+            return redirect()->to('/login');
+
+        }
+        return view('restricted');
     }
 }
+
